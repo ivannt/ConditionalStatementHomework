@@ -1,0 +1,26 @@
+/* Task 7. Write a program that finds the greatest of given 5 variables.*/
+
+
+using System;
+class GreatestVariable
+{
+    static void Main()
+    {
+        Console.Title = "GreatestVariable";
+
+        int countVariables = 5;
+        double[] inputHolder = new double[countVariables];
+        double greatest = double.MinValue;
+        for (int i = 0; i < countVariables; i++)
+        {
+            Console.Write("Enter Variable: ");
+            inputHolder[i] = double.Parse(Console.ReadLine());
+            if (greatest < inputHolder[i])
+            {
+                greatest = inputHolder[i];
+            }
+        }
+        Console.WriteLine(new string('-', 22));
+        Console.WriteLine("The greatest varisble is: {0}", greatest);
+    }
+}
