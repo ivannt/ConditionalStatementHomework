@@ -1,0 +1,36 @@
+/* Task 8. Write a program that, depending on the user's choice inputs int, double or string variable. 
+ * If the variable is integer or double, increases it with 1. If the variable is string, appends "*" 
+ * at its end. The program must show the value of that variable as a console output. Use switch statement.*/
+
+
+using System;
+class UsersChoiseInput
+{
+    static void Main()
+    {
+
+        Console.Title = "UsersChoiseInput";
+
+        Console.WriteLine("Input variables int, double or string: ");
+        Console.WriteLine(new string('-',38));
+        string input = Console.ReadLine();
+
+        double number;
+        bool isNumber = double.TryParse(input, out number);
+        switch (isNumber)
+        {
+            case true:
+                number += 1;
+                Console.WriteLine(number);
+                break;
+            case false:
+                input += "*";
+                Console.WriteLine(input);
+                break;
+            default:
+                Console.WriteLine("Try again");
+                break;
+        }
+        Console.WriteLine();
+    }
+}
