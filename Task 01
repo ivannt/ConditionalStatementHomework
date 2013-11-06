@@ -1,0 +1,28 @@
+/* Task 1. Write an if statement that examines two integer variables 
+ * and  exchanges their values if the first one is greater than the second one.*/
+
+
+using System;
+class ExchangeIntValue
+{
+    static void Main()
+    {
+        Console.Title = "ExchangeIntValue";
+
+        Console.Write("Enter value for first digit: ");
+        int firstNum = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter value for second digit: ");
+        int secondNum = int.Parse(Console.ReadLine());
+
+        int xNum;
+        Console.WriteLine(new string('-',33));
+        if (firstNum > secondNum)
+        {
+            xNum = firstNum;
+            firstNum = secondNum;
+            secondNum = xNum;
+        }
+        Console.WriteLine("Exchanged Values:\nfirst digit = {0}\nsecond digit = {1}\n\n", firstNum, secondNum);
+    }
+}
