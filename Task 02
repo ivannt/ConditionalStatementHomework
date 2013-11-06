@@ -1,0 +1,56 @@
+/* Task 2. Write a program that shows the sign (+ or -) of the product 
+ * of three real numbers without calculating it. Use a sequence of if statements.*/
+
+
+using System;
+class SequenceOfTreeRealNumbers
+{
+    static void Main()
+    {
+        Console.Title = "SequenceOfTreeRealNumbers";
+
+        Console.Write("Enter count number: ");
+        int readCount = int.Parse(Console.ReadLine());
+
+        Console.WriteLine(new string('-', 22));
+        int[] ArrayNum = new int[readCount];
+        for (int index = 0; index < readCount; index++)
+        {
+            Console.Write("Number {0}: ", index + 1);
+            ArrayNum[index] = int.Parse(Console.ReadLine());
+        }
+        int negativeCount = 0;
+        int product = 1;
+        bool zero = false;
+        foreach (var number in ArrayNum)
+        {
+            if (number < 0)
+            {
+                negativeCount++;
+            }
+            product *= number;
+            if (number == 0)
+            {
+                zero = true;
+            }
+        }
+        if (zero)
+        {
+            Console.WriteLine("The product is 0!");
+        }
+        else
+        {
+            if (negativeCount % 2 == 0)
+            {
+                Console.WriteLine("The product IS Positive!");
+            }
+            else
+            {
+                Console.WriteLine("The product is Negative!");
+            }
+        }
+        Console.WriteLine(new string('-',22));
+        Console.WriteLine("Product: {0}", product);
+        Console.WriteLine("Negative Count: {0}", negativeCount);
+    }
+}
