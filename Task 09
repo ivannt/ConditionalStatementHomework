@@ -1,0 +1,53 @@
+/* Task 9. We are given 5 integer numbers. Write a program that checks  if 
+ * the sum of some subset of them is 0. Example: 3, -2, 1, 1, 8  1+1-2=0.*/
+
+
+using System;
+using System.Collections.Generic;
+class ChekTheSubset
+{
+    static void Main()
+    {
+        Console.Title = "ChekTheSubset";
+
+        int[] numbers = new int[]
+        {
+            3, -2, 1, 1, 8 
+        };
+        int sumToCompareWith = 0;
+        List<List<int>> subsets = new List<List<int>>();
+        int subsetMaxMembers = (int)Math.Pow((double)2, (double)numbers.Length) - 1;/* combination of numbers in subset*/
+        for (int subsetMembers = 1; subsetMembers <= subsetMaxMembers; subsetMembers++)
+        {
+            long subsetSum = 0;
+            List<int> subset = new List<int>();
+            for (int i = 0; i < numbers.Length; i++)/* subset members*/
+            {
+                int mask = 1 << i;
+                int subsetAndMask = subsetMembers & mask;
+                int bitValue = subsetAndMask >> i;
+                if (bitValue == 1)
+                {
+                    subsetSum += numbers[i];
+                    subset.Add(numbers[i]);
+                }
+            }
+            if (subsetSum == sumToCompareWith)
+            {
+                subsets.Add(subset);
+            }
+        }
+        Console.WriteLine("There is {0} subset, witch is equal to /{1}/", subsets.Count, sumToCompareWith);
+        Console.WriteLine(new string('-',38));
+        foreach (var subset in subsets)
+        {
+            for (int i = 0; i < subset.Count; i++)
+            {
+                Console.Write("{0}{1}", subset[i], i == subset.Count - 1 ? "" : ", ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine(new string('-', 38));
+        Console.WriteLine();
+    }
+}
